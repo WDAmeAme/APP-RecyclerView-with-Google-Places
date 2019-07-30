@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Google Places Recycler</string>
-    <string name="GOOGLE_API_KEY">TU_CLAVE_API_PLACES</string>
+    <string name="GOOGLE_API_KEY">TU_API_GOOGLE_PLACES</string>
 </resources>

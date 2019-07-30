@@ -74,7 +74,7 @@ public class Prueba extends AppCompatActivity {
         madaptador.notifyDataSetChanged();
         lm = new LinearLayoutManager(context);
         recycler.setLayoutManager(lm);
-        Log.d(Constantes.TAG_OBTENER_LUGARES, "si configura la lista local");
+        //Log.d(Constantes.TAG_OBTENER_LUGARES, "si configura la lista local");
     }
 
     public void construirURL(String palabraClave) {
@@ -84,6 +84,7 @@ public class Prueba extends AppCompatActivity {
                 "&keyword=" + palabraClave +
                 "&key=" + getString(R.string.GOOGLE_API_KEY);
         getLugaresWeb(URL);
+        Log.d(Constantes.TAG_OBTENER_LUGARES, URL);
     }
 
     public void getLugaresWeb(String URL) {
@@ -101,28 +102,34 @@ public class Prueba extends AppCompatActivity {
                             if (resultados.length() > 0) {
                                 for (int i = 0; i < resultados.length(); i++) {
                                     JSONObject googleLugar = resultados.getJSONObject(i);
+                                    JSONArray tiposEstab = googleLugar.getJSONArray("types");
                                     PruebaModelo modeloPP = new PruebaModelo(
                                             googleLugar.getString("id"),
                                             googleLugar.getString("name"),
                                             googleLugar.getString("icon"),
+                                            tiposEstab.getString(0),
                                             googleLugar.getString("vicinity"),
                                             googleLugar.getJSONObject("geometry").getJSONObject("location").getDouble("lat"),
                                             googleLugar.getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
                                     Constantes.mdataLugar.add(modeloPP);
+                                    Log.e(Constantes.TAG_OBTENER_LUGARES, "Tipo Lugar: " + tiposEstab.getString(0));
                                     configurarLista(getApplicationContext(), layoutM, recyclerPrueba, adaptador, Constantes.mdataLugar, Constantes.mselectLugar);
                                 }
                                 if (Constantes.mdataLugar != null) {
                                     Constantes.mdataLugar.clear();
                                     for (int i = 0; i < resultados.length(); i++) {
                                         JSONObject googleLugar = resultados.getJSONObject(i);
+                                        JSONArray tiposEstab = googleLugar.getJSONArray("types");
                                         PruebaModelo modeloPP = new PruebaModelo(
                                                 googleLugar.getString("id"),
                                                 googleLugar.getString("name"),
                                                 googleLugar.getString("icon"),
+                                                tiposEstab.getString(0),
                                                 googleLugar.getString("vicinity"),
                                                 googleLugar.getJSONObject("geometry").getJSONObject("location").getDouble("lat"),
                                                 googleLugar.getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
                                         Constantes.mdataLugar.add(modeloPP);
+                                        Log.e(Constantes.TAG_OBTENER_LUGARES, "Tipo Lugar: " + tiposEstab.getString(0));
                                         configurarLista(getApplicationContext(), layoutM, recyclerPrueba, adaptador, Constantes.mdataLugar, Constantes.mselectLugar);
                                     }
                                 }

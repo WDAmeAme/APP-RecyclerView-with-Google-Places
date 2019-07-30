@@ -4,14 +4,16 @@ public class PruebaModelo {
     String id;
     String nombre;
     String icon;
+    String tipoLugar;
     String domicilio;
     double latitud;
     double longitud;
 
-    public PruebaModelo(String id, String nombre, String icon, String domicilio, double latitud, double longitud) {
+    public PruebaModelo(String id, String nombre, String icon, String tipoLugar, String domicilio, double latitud, double longitud) {
         this.id = id;
         this.nombre = nombre;
         this.icon = icon;
+        this.tipoLugar = tipoLugar;
         this.domicilio = domicilio;
         this.latitud = latitud;
         this.longitud = longitud;
@@ -39,6 +41,14 @@ public class PruebaModelo {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public String getTipoLugar() {
+        return tipoLugar;
+    }
+
+    public void setTipoLugar(String tipoLugar) {
+        this.tipoLugar = tipoLugar;
     }
 
     public String getDomicilio() {

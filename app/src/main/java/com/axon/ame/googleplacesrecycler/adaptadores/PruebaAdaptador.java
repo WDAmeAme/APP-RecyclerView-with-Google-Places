@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.axon.ame.googleplacesrecycler.R;
 import com.axon.ame.googleplacesrecycler.modelos.PruebaModelo;
-import com.bumptech.glide.Glide;
+import com.axon.ame.googleplacesrecycler.utilidades.TiposLugar;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
@@ -64,7 +64,8 @@ public class PruebaAdaptador extends RecyclerView.Adapter<PruebaAdaptador.ViewHo
         }
 
         void bind(final PruebaModelo modelo, final OnItemClickListenerLugar listener) {
-            Glide.with(mContext).applyDefaultRequestOptions(opcionesImg).load(modelo.getIcon()).into(this.mImg);
+            //Glide.with(mContext).applyDefaultRequestOptions(opcionesImg).load(modelo.getIcon()).into(this.mImg);
+            new TiposLugar(modelo, mImg);
             mNombre.setText(modelo.getNombre());
             mDomicilio.setText(modelo.getDomicilio());
             itemView.setOnClickListener(new View.OnClickListener() {
