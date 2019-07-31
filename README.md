@@ -6,6 +6,10 @@ Proyecto en **Android Studio 3.4.2** con las actualizaciones del _29 de Julio de
 
 > **¡Apoya a la comunidad!** No olvides dejar tu comentario para que apoyes a la comunidad y pueda seguir creciendo nuestra comunidad de desarrolladores, apreció tu comentario y me motiva para seguir contribuyendo ;)
 
+# DEMO
+
+En la carpeta de capturas se encuentra el demo de la aplicación, se puede realizar demo descargando el RELASE del proyecto, para versiones superiores a la API 26, es necesario aceptar los permisos manualmente, aún no está preparado los permisos.
+
 # Archivos
 
 Los archivos contiene el Adaptador, Modelo de datos y Vista del RecyclerView, contiene la vista y la actividad principal: **Actividad/Prueba.java** usar la clave API en Strings valores.
