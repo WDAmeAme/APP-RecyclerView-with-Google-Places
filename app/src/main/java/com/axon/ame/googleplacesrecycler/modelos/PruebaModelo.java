@@ -1,6 +1,7 @@
 package com.axon.ame.googleplacesrecycler.modelos;
 
 public class PruebaModelo {
+    boolean seleccionar;
     String id;
     String nombre;
     String icon;
@@ -9,7 +10,8 @@ public class PruebaModelo {
     double latitud;
     double longitud;
 
-    public PruebaModelo(String id, String nombre, String icon, String tipoLugar, String domicilio, double latitud, double longitud) {
+    public PruebaModelo(boolean seleccionar, String id, String nombre, String icon, String tipoLugar, String domicilio, double latitud, double longitud) {
+        this.seleccionar = seleccionar;
         this.id = id;
         this.nombre = nombre;
         this.icon = icon;
@@ -17,6 +19,14 @@ public class PruebaModelo {
         this.domicilio = domicilio;
         this.latitud = latitud;
         this.longitud = longitud;
+    }
+
+    public boolean isSeleccionar() {
+        return seleccionar;
+    }
+
+    public void setSeleccionar(boolean seleccionar) {
+        this.seleccionar = seleccionar;
     }
 
     public String getId() {

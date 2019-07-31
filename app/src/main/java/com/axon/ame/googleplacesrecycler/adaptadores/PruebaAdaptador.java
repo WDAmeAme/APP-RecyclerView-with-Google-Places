@@ -65,19 +65,19 @@ public class PruebaAdaptador extends RecyclerView.Adapter<PruebaAdaptador.ViewHo
 
         void bind(final PruebaModelo modelo, final OnItemClickListenerLugar listener) {
             //Glide.with(mContext).applyDefaultRequestOptions(opcionesImg).load(modelo.getIcon()).into(this.mImg);
-            new TiposLugar(modelo, mImg);
             mNombre.setText(modelo.getNombre());
             mDomicilio.setText(modelo.getDomicilio());
+            new TiposLugar(modelo, mImg);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClickLugar(modelo, getAdapterPosition());
+                    listener.onItemClickLugar(modelo, getAdapterPosition(), itemView);
                 }
             });
         }
     }
 
     public interface OnItemClickListenerLugar {
-        void onItemClickLugar(PruebaModelo modelo, int position);
+        void onItemClickLugar(PruebaModelo modelo, int position, View vista);
     }
 }

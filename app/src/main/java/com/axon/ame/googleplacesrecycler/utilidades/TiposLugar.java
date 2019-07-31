@@ -116,6 +116,9 @@ public class TiposLugar {
             case "fire_station":
                 mImg.setImageResource(R.drawable.ic_bomberos);
                 break;
+            case "finance":
+                mImg.setImageResource(R.drawable.ic_dependencia);
+                break;
             case "florist":
                 mImg.setImageResource(R.drawable.ic_flor);
                 break;
@@ -231,13 +234,16 @@ public class TiposLugar {
                 mImg.setImageResource(R.drawable.ic_dependencia);
                 break;
             case "real_estate_agency":
-                mImg.setImageResource(R.drawable.ic_hotel);
+                mImg.setImageResource(R.drawable.ic_dependencia);
                 break;
             case "restaurant":
                 mImg.setImageResource(R.drawable.ic_restaurante);
                 break;
             case "roofing_contractor":
                 mImg.setImageResource(R.drawable.ic_construccion);
+                break;
+            case "route":
+                mImg.setImageResource(R.drawable.ic_ubicacion);
                 break;
             case "rv_park":
                 mImg.setImageResource(R.drawable.ic_campo);

@@ -1,6 +1,7 @@
 package com.axon.ame.googleplacesrecycler.actividades;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -64,10 +66,23 @@ public class Prueba extends AppCompatActivity {
     }
 
     public static void configurarLista(final Context context, RecyclerView.LayoutManager lm, RecyclerView recycler, RecyclerView.Adapter madaptador, final ArrayList<PruebaModelo> dataArray, final ArrayList<PruebaModelo> dataSelect) {
+        //recycler.setHasFixedSize(false);
         madaptador = new PruebaAdaptador(context, dataArray, dataSelect, new PruebaAdaptador.OnItemClickListenerLugar() {
             @Override
-            public void onItemClickLugar(PruebaModelo modelo, int position) {
-                Toast.makeText(context, "LATITUD: " + modelo.getLatitud() + ", LONGITUD: " + modelo.getLongitud(), Toast.LENGTH_SHORT).show();
+            public void onItemClickLugar(PruebaModelo modelo, int position, View vista) {
+                //Toast.makeText(context, "LATITUD: " + modelo.getLatitud() + ", LONGITUD: " + modelo.getLongitud(), Toast.LENGTH_SHORT).show();
+                /*if (Constantes.mdataLugar.get(position).isSeleccionar()) {
+                    modelo.setSeleccionar(false);
+                    Toast.makeText(context, "seleccionados: " + modelo.isSeleccionar(), Toast.LENGTH_SHORT).show();
+                    vista.setBackgroundColor(Color.WHITE);
+                    Constantes.mselectLugar.remove(modelo);
+                } else {
+                    modelo.setSeleccionar(true);
+                    Toast.makeText(context, "seleccionados: " + modelo.isSeleccionar(), Toast.LENGTH_SHORT).show();
+                    vista.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                    Constantes.mselectLugar.add(modelo);
+                }*/
+                //Toast.makeText(context, "seleccionados: " + Constantes.mselectLugar, Toast.LENGTH_SHORT).show();
             }
         });
         recycler.setAdapter(madaptador);
@@ -104,6 +119,7 @@ public class Prueba extends AppCompatActivity {
                                     JSONObject googleLugar = resultados.getJSONObject(i);
                                     JSONArray tiposEstab = googleLugar.getJSONArray("types");
                                     PruebaModelo modeloPP = new PruebaModelo(
+                                            false,
                                             googleLugar.getString("id"),
                                             googleLugar.getString("name"),
                                             googleLugar.getString("icon"),
@@ -121,6 +137,7 @@ public class Prueba extends AppCompatActivity {
                                         JSONObject googleLugar = resultados.getJSONObject(i);
                                         JSONArray tiposEstab = googleLugar.getJSONArray("types");
                                         PruebaModelo modeloPP = new PruebaModelo(
+                                                false,
                                                 googleLugar.getString("id"),
                                                 googleLugar.getString("name"),
                                                 googleLugar.getString("icon"),
@@ -143,7 +160,7 @@ public class Prueba extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(Constantes.TAG_OBTENER_LUGARES, "Error " + error);
-                Toast.makeText(getApplicationContext(), "No hay conexión=", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "No hay conexión", Toast.LENGTH_SHORT).show();
             }
         });
         MySingleton.getInstance(getApplicationContext()).agregarAlaRequestQueue(peticion);
